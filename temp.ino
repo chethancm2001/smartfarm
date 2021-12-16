@@ -1,13 +1,13 @@
-#include<DHT.h>
+#include"DHT.h"
 #include <ESP8266WiFi.h>
 
 #define sensor A0
 #define dht_pin D1
 #define dht_type DHT11
 
-String apiKey = "BY7P6J5KJIKXOCKP";     //  Enter your Write API key from ThingSpeak
+String apiKey = "miniproject";     //  Enter your Write API key from ThingSpeak
 
-const char *ssid =  "Galaxy A70";     // replace with your wifi ssid and wpa2 key
+const char *ssid =  "12345678";     // replace with your wifi ssid and wpa2 key
 const char *pass =  "ammanana";
 const char *server = "api.thingspeak.com";
 
@@ -15,6 +15,9 @@ DHT farm(dht_pin,dht_type);
 WiFiClient client;
 
 void setup() {
+  pinMode(A0,OUTPUT);
+  
+  
   Serial.begin(9600);
   farm.begin();
   pinMode(sensor,OUTPUT);
@@ -40,7 +43,7 @@ void loop() {
   
   Serial.println(t);
   Serial.print(h);
-  Serial.print(moisture_percentage);
+  Serial.println(moisture_percentage);
 
 if (isnan(h) || isnan(t)) 
                  {
